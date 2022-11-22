@@ -30,7 +30,7 @@ class PublishController extends Controller
             ]);
         } catch (Throwable $e) {
             return response()->json([
-                'status' => false,
+                'status' => 'error',
                 'message' => $e->getMessage(),
             ]);
         }

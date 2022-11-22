@@ -56,6 +56,7 @@ class TopicsController extends Controller
 
             return response()->json([
                 'data' => $topics,
+                'status' => "success",
             ]);
         } catch (Throwable $e) {
             return response()->json([
@@ -85,6 +86,7 @@ class TopicsController extends Controller
             $response = [
                 'message' => 'Topic created.',
                 'data' => $topic->toArray(),
+                'status' => "success"
             ];
 
             return response()->json($response);
@@ -92,6 +94,11 @@ class TopicsController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessageBag(),
+            ]);
+        } catch (Throwable $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
             ]);
         }
     }
@@ -110,6 +117,7 @@ class TopicsController extends Controller
 
             return response()->json([
                 'data' => $topic,
+                'status' => "success"
             ]);
         } catch (Throwable $e) {
             return response()->json([
@@ -139,6 +147,7 @@ class TopicsController extends Controller
             $response = [
                 'message' => 'Topic updated.',
                 'data' => $topic->toArray(),
+                'status' => "success"
             ];
 
             return response()->json($response);
@@ -146,6 +155,11 @@ class TopicsController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => $e->getMessageBag(),
+            ]);
+        } catch (Throwable $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
             ]);
         }
     }
@@ -159,12 +173,18 @@ class TopicsController extends Controller
      * @return JsonResponse
      */
     public function destroy(Topic $topic): JsonResponse
-    {
-        $deleted = $this->repository->delete($topic->id);
+    {try
+       { $deleted = $this->repository->delete($topic->id);
 
         return response()->json([
             'message' => 'Topic deleted.',
             'deleted' => $deleted,
-        ]);
+            'status' => "success"
+        ]);} catch (Throwable $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }

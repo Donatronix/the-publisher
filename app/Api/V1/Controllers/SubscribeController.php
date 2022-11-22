@@ -30,7 +30,7 @@ class SubscribeController extends Controller
             return response()->json([
                 'status' => 'success',
                 'data' => $payload,
-            ],200);
+            ], 200);
         } catch (Throwable $e) {
             return response()->json([
                 'status' => 'error',
