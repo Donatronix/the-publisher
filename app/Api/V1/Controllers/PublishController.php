@@ -21,14 +21,14 @@ class PublishController extends Controller
     public function publish(Topic $topic)
     {
         try {
-            $response = Http::post(URLEnum::SUBSCRIBER, [
-                'url' => "http://mysubscriber.test",
+            $payload =  [
+                'data' => "http://mysubscriber.test",
                 'topic' => $topic->slug,
-            ]);
+            ];
 
             return response()->json([
-                'status' => $response->ok(),
-                'data' => $response->body(),
+                'status' => 'success',
+                'data' => $payload,
             ]);
         } catch (Throwable $e) {
             return response()->json([

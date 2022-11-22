@@ -24,16 +24,14 @@ class SubscribeController extends Controller
     {
         try {
             $payload = [
-                'url' => "http://mysubscriber.test",
+                'url' => $request->url,
                 'topic' => $topic->slug,
             ];
 
-            $response = Http::post(URLEnum::PUBLISHER, $payload);
-
             return response()->json([
-                'status' => $response->ok(),
-                'data' => $response->body(),
-            ]);
+                'status' => 'success',
+                'data' => $payload,
+            ],200);
         } catch (Throwable $e) {
             return response()->json([
                 'status' => 'error',
