@@ -1,8 +1,8 @@
 <?php
 
-use App\Api\V1\Controllers\MessageController;
+use App\Api\V1\Controllers\PublishController;
 use App\Api\V1\Controllers\SubscribersController;
-use App\Api\V1\Controllers\SubscriptionController;
+use App\Api\V1\Controllers\SubscribeController;
 use App\Api\V1\Controllers\TopicsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +27,6 @@ Route::resource('subscribers', SubscribersController::class);
 Route::resource('topics', TopicsController::class);
 
 //publisher server endpoints
-Route::post('/subscribe/{topic}', [SubscriptionController::class, 'subscribe']);
+Route::post('/subscribe/{topic}', [SubscribeController::class, 'subscribe'])->name('subscribe');
 
-Route::post('/publish/{topic}', [MessageController::class, 'publish']);
+Route::post('/publish/{topic}', [PublishController::class, 'publish'])->name('publish');

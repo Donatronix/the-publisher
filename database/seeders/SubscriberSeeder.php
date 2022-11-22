@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Subscriber;
 use App\Models\Topic;
 use App\Models\User;
 use App\Repositories\Interfaces\SubscriberRepository;
@@ -33,13 +32,14 @@ class SubscriberSeeder extends Seeder
     public function run(): void
     {
         User::all()->each(function ($user) {
-            $subscriber = Subscriber::create([
+            $subscriber = $this->repository->create([
                 'user_id' => $user->id,
             ]);
 
-            $id = Topic::query()->inRandomOrder()->first()->id;
-
-            $subscriber->topics()->atttach($id);
+            // do {
+            //     $id = Topic::query()->inRandomOrder()->first()->id;
+            // } while (in_array($id, $subscriber->topics->pluck('id')->toArray()));
+            // $subscriber->topics()->atttach($id);
         });
     }
 }

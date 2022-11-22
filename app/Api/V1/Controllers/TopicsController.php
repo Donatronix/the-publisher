@@ -59,7 +59,7 @@ class TopicsController extends Controller
             ]);
         } catch (Throwable $e) {
             return response()->json([
-                'error' => true,
+                'status' => 'error',
                 'message' => $e->getMessage(),
             ]);
         }
@@ -90,7 +90,7 @@ class TopicsController extends Controller
             return response()->json($response);
         } catch (ValidatorException $e) {
             return response()->json([
-                'error' => true,
+                'status' => 'error',
                 'message' => $e->getMessageBag(),
             ]);
         }
@@ -113,7 +113,7 @@ class TopicsController extends Controller
             ]);
         } catch (Throwable $e) {
             return response()->json([
-                'error' => true,
+                'status' => 'error',
                 'message' => $e->getMessage(),
             ]);
         }
@@ -144,7 +144,7 @@ class TopicsController extends Controller
             return response()->json($response);
         } catch (ValidatorException $e) {
             return response()->json([
-                'error' => true,
+                'status' => 'error',
                 'message' => $e->getMessageBag(),
             ]);
         }
