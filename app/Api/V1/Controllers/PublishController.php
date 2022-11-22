@@ -2,11 +2,9 @@
 
 namespace App\Api\V1\Controllers;
 
-use App\Enums\URLEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Http;
 use Throwable;
 
 class PublishController extends Controller
@@ -22,7 +20,7 @@ class PublishController extends Controller
     {
         try {
             $payload =  [
-                'data' => "http://mysubscriber.test",
+                'data' => $topic->toArray(),
                 'topic' => $topic->slug,
             ];
 

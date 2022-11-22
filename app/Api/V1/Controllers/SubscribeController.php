@@ -2,12 +2,11 @@
 
 namespace App\Api\V1\Controllers;
 
-use App\Enums\URLEnum;
+
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Throwable;
 
 class SubscribeController extends Controller
