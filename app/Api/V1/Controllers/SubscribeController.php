@@ -23,7 +23,7 @@ class SubscribeController extends Controller
     {
         try {
             $payload = [
-                'url' => $request->url,
+                'url' => $request->get('url'),
                 'topic' => $topic->slug,
             ];
 
